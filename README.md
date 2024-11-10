@@ -1,2 +1,2 @@
 # Trident
-A programming language built for Advent of Code
+A programming language built for Advent of Code.
