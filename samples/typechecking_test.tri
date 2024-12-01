@@ -1,0 +1,15 @@
+type IntArray = Int[];
+type StringPair = (String, String);
+type StringPairArray = StringPair[];
+
+struct Point {
+    x: Int;
+    y: Int;
+}
+
+struct Person {
+    name: String;
+    age: Int;
+    friends: Person[];
+    location: Point;
+}

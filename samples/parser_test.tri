@@ -1,0 +1,194 @@
+-- Type declarations
+type Point2D = (Int, Int);
+
+-- Single dimension arrays
+type IntArray = Int[];
+type StringArray = String[];
+
+-- Multidimensional arrays
+type Matrix = Int[][];
+type Cube = Int[][][];
+
+-- Arrays of complex types
+type TupleArray = (Int, String)[];
+type PointArray = Point[];
+type NestedTuples = (Int, Int[])[];
+
+-- Function types with arrays
+type ArrayFunc = Int[] -> Int[];
+type Matrix2DFunc = Int[][] -> Int;
+
+-- Complex combinations
+type ComplexType = (Int[] -> String[])[];
+type NestedArrays = (Int[], String[][])[][];
+
+-- Struct declarations
+struct Point {
+    x: Int;
+    y: Int;
+}
+
+struct Person {
+    name: String;
+    age: Int;
+    hobbies: String[];
+}
+
+struct Tree {
+    value: Int;
+    left: Point;
+    right: Point;
+}
+
+-- Global variables with let
+let numbers: Int[] = [1, 2, 3, 4, 5];
+let origin: Point = Point { x = 0, y = 0 };
+let CONST_VALUE = 42;  -- Type inference for globals
+
+-- Function declarations with different features
+fn add(x: Int, y: Int) -> Int {
+    return x + y;
+}
+
+fn factorial(n: Int) -> Int {
+    if n <= 1 {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+fn processPoint(p: Point) -> String {
+    case p {
+        Point { x = 0, y = 0 } => {
+            return "At origin";
+        }
+        Point { x, y } if x == y => {
+            return "On diagonal";
+        }
+        Point { x, y } => {
+            return "At ({x}, {y})";
+        }
+    }
+}
+
+fn processList(items: Int[]) -> Int {
+    -- Pattern matching in for loop
+    let sum = 0;
+    for x in items {
+        sum = sum + x;
+    }
+    return sum;
+}
+
+fn processArray(arr: Int[]) -> Int {
+    case arr {
+        [] => {
+            return 0;
+        }
+        [x] => {
+            return x;
+        }
+        [x, ...rest] => {
+            return x + processArray(rest);
+        }
+    }
+}
+
+-- Function with complex return type
+fn makeAdder(x: Int) -> Int -> Int {
+    return \(y: Int) -> x + y;
+}
+
+-- Main function testing various features
+fn main() -> Int {
+    -- Let bindings with type annotations
+    let x: Int = 42;
+    let y = 23;  -- Type inference
+    let nullVar = null;
+    
+    -- Tuple destructuring
+    let point: (Int, Int) = (10, 20);
+    let (a, b) = point;
+    let yoink = point.0;
+    
+    -- Array operations
+    let nums = [1, 2, 3];
+    let moreNums = [4, 5, 6];
+    let combined = nums ++ moreNums;
+    let first = nums[0];
+    
+    -- Struct creation and field access
+    let p = Point { x = 100, y = 200 };
+    let xCoord = p.x;
+    
+    -- Lambda expressions
+    let double = \(x: Int) -> x * 2;
+    let complexCalc = \(x: Int) -> {
+        let temp = x * 2;
+        return temp + 1;
+    }
+    
+    -- Binary operators
+    let a1 = 5 + 3 * 2;         -- Arithmetic
+    let b1 = a1 <= 10;          -- Comparison
+    let c1 = true && false;     -- Logical
+    let d1 = -a1;               -- Unary
+    
+    -- Function calls
+    let sum = add(5, 10);
+    let fact = factorial(5);
+    
+    let lambdaVar: Int -> Int = \(x: Int) -> x; 
+    let lambdaVar1 = \(x: Int) -> {return x;}
+
+    -- If-else
+    if a > b {
+        return a;
+    } else {
+        return b;
+    }
+    
+    -- While loop
+    let counter = 0;
+    while counter < 10 {
+        counter = counter + 1;
+    }
+    
+    -- For loop with pattern matching
+    let pairs = [(1, 2), (3, 4), (5, 6)];
+    for (x, y) in pairs {
+        print("({x}, {y})");
+    }
+    
+    -- Case statement with guard
+    case x {
+        0 => { return "Zero"; }
+        n if n < 0 => { return "Negative"; }
+        n if n % 2 == 0 => { return "Even"; }
+        _ => { return "Odd"; }
+    }
+    
+    -- Complex pattern matching
+    let nested = [(1, [2, 3]), (4, [5, 6])];
+    case nested {
+        [] => { print("Empty"); }
+        [(x, [y, ...ys]), ...rest] => {
+            print("First: {x}, {y}, {ys}");
+            print("Rest: {rest}");
+        }
+    }
+    
+    -- Higher order functions
+    let adder = makeAdder(10);
+    let fifteen = adder(5);
+    
+    -- Chained function calls
+    let value = add(add(1, 2), add(3, 4));
+    
+    -- String interpolation
+    let name = "World";
+    let greeting = "Hello {name}!";
+    let complex = "Sum: {add(5, 10)}, Double: {double(7)}";
+    
+    return 0;
+}

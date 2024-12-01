@@ -1,0 +1,10 @@
+fn main() {
+    let x: Int = 5;
+    let y = 7;
+    let z: Int[]  = [5, 4]
+    
+    for a in z:
+        print(z)
+    
+    print(x + y)
+}

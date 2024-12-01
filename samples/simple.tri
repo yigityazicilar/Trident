@@ -1,0 +1,55 @@
+type T1 = Int;                          -- Basic type
+type T2 = Int[];                        -- Array type
+type T3 = Int[][];                      -- Multidimensional array
+type T4 = (Int, Int);                   -- Tuple type
+type T5 = (Int, Int)[];                 -- Array of tuple
+type T6 = (Int[], String[]);            -- Tuple of arrays
+type T7 = Int -> Int;                   -- Function type
+type T8 = Int -> Int -> Int;            -- Multi-argument function
+type T9 = (Int, Int) -> Int;            -- Tuple parameter
+type T10 = Int -> (Int, Int);           -- Tuple return
+type T11 = (Int -> Int)[];              -- Array of functions
+type T12 = Int[] -> Int[];              -- Function with array types
+type T13 = (Int -> Int, String -> Bool); -- Tuple of functions
+type T14 = ((Int, Int) -> Int)[];       -- Array of tuple functions
+type T15 = Int -> (Int -> Int) -> Int;  -- Function that takes an Int and a function that from (Int -> Int) and outputs Int
+type NestedArrayFunc = Int[][] -> (String[] -> Bool)[];
+type ComplexType = (Int[] -> String[])[];
+type SuperNested = ((Int[] -> Int[])[], String[][])[][];
+
+fn main() -> Int {
+    let [x, ...xs] = [1, 2, 3, 4, 5];
+    case x {
+        n => {}
+        42 => {}
+        (x, y) => {}
+        (x, (y, z)) => {}
+        Point { x=42, y=n } if n > 5 => {}
+        [] => {}
+        [x, ...xs] => {}
+        [(x, y), (z, a), ...rest] => {}
+        _ => {}
+    }
+    
+    for (x, y) in [(1,2), (3,4)] {
+        
+    }
+    return x;
+
+}
+
+struct Ray {
+    aslkjdhfasdfhkaj: Int;
+    s: String;
+    a: Ray;
+}
+
+let (x, y) = (5, 10);
+let y: Int;
+let z:Int;
+let [a] = [5];
+let [x, ...xs] = [5, 6, 7, 7, 8, 9];
+let (_, y) = ([1,2,3], 4);
+let [x, ...xs, y] = [5, 6, 7, 8];
+let x, y = (5, 4);
+let x, (y, z) = (5, (4, 2));
